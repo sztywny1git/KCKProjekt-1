@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { zarejestruj } from '../services/apiService';
+import { api } from '../services/apiService';
 
 const Register = () => {
     const [nazwa, setNazwa] = useState('');
@@ -8,10 +9,10 @@ const Register = () => {
 
     const handleRegister = async () => {
         try {
-            const response = await zarejestruj(nazwa, haslo);
+            const response = await api.zarejestruj(nazwa, haslo);
             setMessage(response.message);
         } catch (error) {
-            setMessage('Wyst¹pi³ b³¹d podczas rejestracji.');
+            setMessage('Wystï¿½piï¿½ bï¿½ï¿½d podczas rejestracji.');
         }
     };
 
@@ -20,13 +21,13 @@ const Register = () => {
             <h2>Rejestracja</h2>
             <input
                 type="text"
-                placeholder="Nazwa u¿ytkownika"
+                placeholder="Nazwa uï¿½ytkownika"
                 value={nazwa}
                 onChange={(e) => setNazwa(e.target.value)}
             />
             <input
                 type="password"
-                placeholder="Has³o"
+                placeholder="Hasï¿½o"
                 value={haslo}
                 onChange={(e) => setHaslo(e.target.value)}
             />

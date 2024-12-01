@@ -64,7 +64,7 @@ public class UzytkownikController : ControllerBase
         return Ok(new { message = "Produkt zaktualizowany w koszyku." });
     }
 
-    [HttpPost("uzytkownik/logowanie")]
+    [HttpPost("logowanie")]
     public IActionResult Zaloguj([FromBody] LogowanieRequest request)
     {
         if (_uzytkownikModel.ZalogujUzytkownika(request.Nazwa, request.Haslo))
@@ -75,7 +75,7 @@ public class UzytkownikController : ControllerBase
         return Unauthorized(new { message = "Błędna nazwa użytkownika lub hasło." });
     }
 
-    [HttpPost("uzytkownik/rejestracja")]
+    [HttpPost("rejestracja")]
     public IActionResult Zarejestruj([FromBody] RejestracjaRequest request)
     {
         if (_uzytkownikModel.ZarejestrujUzytkownika(request.Nazwa, request.Haslo))

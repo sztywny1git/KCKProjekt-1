@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getProdukty } from '../services/apiService';
+import { api } from '../services/apiService';
 
 const ProduktList = () => {
     const [produkty, setProdukty] = useState([]);
@@ -7,10 +8,10 @@ const ProduktList = () => {
     useEffect(() => {
         const fetchProdukty = async () => {
             try {
-                const response = await getProdukty();
+                const response = await api.getProdukty();
                 setProdukty(response);
             } catch (error) {
-                console.error('B³¹d podczas pobierania produktów:', error);
+                console.error('Bï¿½ï¿½d podczas pobierania produktï¿½w:', error);
             }
         };
 
@@ -19,7 +20,7 @@ const ProduktList = () => {
 
     return (
         <div>
-            <h2>Lista produktów</h2>
+            <h2>Lista produktï¿½w</h2>
             <ul>
                 {produkty.map((produkt) => (
                     <li key={produkt.id}>{produkt.nazwa} - {produkt.cena} PLN</li>

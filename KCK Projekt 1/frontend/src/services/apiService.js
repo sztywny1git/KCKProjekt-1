@@ -1,53 +1,63 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
-const API_URL = 'http://localhost:5000/api'; // Zmieñ na adres swojego backendu
+const API_URL = 'http://localhost:5000/api/uzytkownik/'; // ZmieÅ„ na adres swojego backendu
 
-export const getProdukty = async () => {
-    try {
-        const response = await axios.get(`${API_URL}/produkty`);
-        return response.data;
-    } catch (error) {
-        console.error('B³¹d podczas pobierania produktów:', error);
-        throw error;
-    }
-};
+// Tworzenie instancji axios z predefiniowanym URL-em i nagÅ‚Ã³wkami
+const axiosInstance = axios.create({
+  baseURL: API_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
-export const dodajDoKoszyka = async (produktId, ilosc) => {
+export const api = {
+  getProdukty: async () => {
     try {
-        const response = await axios.post(`${API_URL}/koszyk/dodaj`, { produktId, ilosc });
-        return response.data;
+      const response: AxiosResponse = await axiosInstance.get(`/produkty`);
+      return response.data;
     } catch (error) {
-        console.error('B³¹d podczas dodawania produktu do koszyka:', error);
-        throw error;
+      console.error('BÅ‚Ä…d podczas pobierania produktÃ³w:', error);
+      throw error;
     }
-};
+  },
 
-export const pobierzKoszyk = async () => {
+  dodajDoKoszyka: async (produktId: number, ilosc: number) => {
     try {
-        const response = await axios.get(`${API_URL}/koszyk`);
-        return response.data;
+      const response: AxiosResponse = await axiosInstance.post(`/koszyk/dodaj`, { produktId, ilosc });
+      return response.data;
     } catch (error) {
-        console.error('B³¹d podczas pobierania koszyka:', error);
-        throw error;
+      console.error('BÅ‚Ä…d podczas dodawania produktu do koszyka:', error);
+      throw error;
     }
-};
+  },
 
-export const zaloguj = async (nazwa, haslo) => {
+  pobierzKoszyk: async () => {
     try {
-        const response = await axios.post(`${API_URL}/uzytkownik/logowanie`, { nazwa, haslo });
-        return response.data;
+      const response: AxiosResponse = await axiosInstance.get(`/koszyk`);
+      return response.data;
     } catch (error) {
-        console.error('B³¹d podczas logowania:', error);
-        throw error;
+      console.error('BÅ‚Ä…d podczas pobierania koszyka:', error);
+      throw error;
     }
-};
+  },
 
-export const zarejestruj = async (nazwa, haslo) => {
+  zaloguj: async (nazwa: string, haslo: string) => {
     try {
-        const response = await axios.post(`${API_URL}/uzytkownik/rejestracja`, { nazwa, haslo });
-        return response.data;
+      const response: AxiosResponse = await axiosInstance.post(`/logowanie`, { nazwa, haslo });
+      return response.data;
     } catch (error) {
-        console.error('B³¹d podczas rejestracji:', error);
-        throw error;
+      console.error('BÅ‚Ä…d podczas logowania:', error);
+      throw error;
     }
+  },
+
+  zarejestruj: async (nazwa: string, haslo: string) => {
+    try {
+      const response: AxiosResponse = await axiosInstance.post(`/rejestracja`, { nazwa, haslo });
+      return response.data;
+    } catch (error) {
+      console.error('BÅ‚Ä…d podczas rejestracji:', error);
+      throw error;
+    }
+  },
 };

@@ -17,6 +17,11 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddScoped<UzytkownikModel>();
+builder.Services.AddScoped<ProduktModel>();
+builder.Services.AddScoped<Koszyk>();
+
+
 // Utwórz aplikację.
 var app = builder.Build();
 
