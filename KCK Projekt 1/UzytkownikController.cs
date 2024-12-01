@@ -6,15 +6,15 @@ using System.Runtime.InteropServices;
 
 
 
-[ApiController]
 [Route("api/[controller]")]
-public class Controller : ControllerBase
+[ApiController]
+public class UzytkownikController : ControllerBase
 {
     private readonly UzytkownikModel _uzytkownikModel;
     private readonly ProduktModel _produktModel;
     private readonly Koszyk _koszyk;
 
-    public Controller(UzytkownikModel uzytkownikModel, ProduktModel produktModel, Koszyk koszyk)
+    public UzytkownikController(UzytkownikModel uzytkownikModel, ProduktModel produktModel, Koszyk koszyk)
     {
         _uzytkownikModel = uzytkownikModel;
         _produktModel = produktModel;

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 const API_URL = 'http://localhost:5000/api'; // Zmieñ na adres swojego backendu
 
