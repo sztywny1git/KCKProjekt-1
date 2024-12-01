@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getProdukty } from '../services/apiService';
 import { api } from '../services/apiService';
 
 const ProduktList = () => {
@@ -14,7 +13,6 @@ const ProduktList = () => {
                 console.error('B��d podczas pobierania produkt�w:', error);
             }
         };
-
         fetchProdukty();
     }, []);
 

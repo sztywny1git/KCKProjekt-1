@@ -4,9 +4,11 @@ import Login from './components/Login';
 import Register from './components/Register';
 import ProduktList from './components/ProduktList';
 import Koszyk from './components/Koszyk';
+import { AuthProvider } from './AuthContext';
 
 function App() {
     return (
+        <AuthProvider>
         <div className="App">
             <Header />
             <Login />
@@ -14,6 +16,7 @@ function App() {
             <ProduktList />
             <Koszyk />
         </div>
+        </AuthProvider>
     );
 }
 

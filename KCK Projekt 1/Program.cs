@@ -9,9 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReactApp", builder =>
+    options.AddPolicy("AllowAll", builder =>
     {
-        builder.WithOrigins("http://localhost:3000")
+        builder.AllowAnyOrigin()
                .AllowAnyMethod()
                .AllowAnyHeader();
     });
@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
 }
 
 // Konfiguracja CORS
-app.UseCors("AllowReactApp");
+app.UseCors("AllowAll");
 
 // Konfiguracja routingu i kontrolerów.
 app.UseRouting();

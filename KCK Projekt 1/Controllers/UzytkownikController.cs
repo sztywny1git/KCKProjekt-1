@@ -21,7 +21,7 @@ public class UzytkownikController : ControllerBase
         _koszyk = koszyk;
     }
 
-    [HttpGet("produkty")]
+    [HttpGet("/produkty")]
     public IActionResult PobierzProdukty()
     {
         var produkty = _produktModel.PobierzWszystkieProdukty();
